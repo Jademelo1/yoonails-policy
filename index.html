@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoonails 预约须知与价目表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#241019; --surface:#2f1620; --surface-2:#361a25;
+    --ink:#f4e9e2; --ink-muted:#c9b3ac; --hairline:#4a2530;
+    --gold:#c9a15a; --rose:#b98484; --wine:#a3454e; --sage:#7c8863; --lavender:#9c8aa5;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Work Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 22px 80px;}
+
+  /* language toggle */
+  body[data-lang="zh"] .en{display:none;}
+  body[data-lang="en"] .zh{display:none;}
+  .langbar{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,var(--bg) 70%,transparent);padding:14px 0 6px;display:flex;justify-content:flex-end;}
+  .langtoggle{display:inline-flex;background:var(--surface);border:1px solid var(--hairline);border-radius:999px;padding:3px;gap:2px;}
+  .langtoggle button{border:none;background:transparent;color:var(--ink-muted);font-family:'Work Sans',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.03em;padding:6px 14px;border-radius:999px;cursor:pointer;}
+  body[data-lang="zh"] .langtoggle button[data-set="zh"],
+  body[data-lang="en"] .langtoggle button[data-set="en"]{background:var(--gold);color:#241019;}
+
+  .hero{padding:12px 0 24px;text-align:center;}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(32px,9vw,44px);margin:0;}
+  .brand small{display:block;margin-top:4px;font-size:0.36em;font-weight:500;font-style:italic;color:var(--ink-muted);letter-spacing:.08em;text-transform:uppercase;}
+  .swatches{display:flex;justify-content:center;gap:9px;margin:22px 0 4px;}
+  .swatch{width:14px;height:14px;border-radius:50%;box-shadow:0 0 0 3px rgba(244,233,226,.06);}
+  .swatch.gold{background:var(--gold);} .swatch.rose{background:var(--rose);} .swatch.wine{background:var(--wine);}
+  .swatch.sage{background:var(--sage);} .swatch.lavender{background:var(--lavender);}
+
+  .consent{background:var(--surface);border:1px solid var(--hairline);border-radius:14px;padding:16px 18px;margin:24px 0 36px;font-size:14px;color:var(--ink-muted);}
+  .consent strong{color:var(--ink);font-weight:600;display:block;margin-bottom:4px;}
+
+  section{margin-bottom:36px;}
+  .section-head{display:flex;align-items:center;gap:11px;margin-bottom:12px;}
+  .dot{width:11px;height:11px;border-radius:50%;flex:none;}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:20px;margin:0;}
+  p{margin:0 0 8px;color:var(--ink-muted);font-size:14.5px;}
+  ul{margin:0;padding-left:0;list-style:none;}
+  li{color:var(--ink-muted);font-size:14.5px;padding:9px 0;border-top:1px solid var(--hairline);}
+  li:first-child{border-top:none;}
+  li b{color:var(--ink);font-weight:600;}
+
+  .note{font-size:12.5px;color:var(--ink-muted);opacity:.75;margin-top:2px;}
+
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:4px;}
+  th,td{text-align:left;padding:10px 8px;border-top:1px solid var(--hairline);color:var(--ink-muted);}
+  th{font-weight:600;color:var(--ink);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;}
+  td:last-child,th:last-child{text-align:right;white-space:nowrap;}
+  .price-group{margin-bottom:18px;}
+  .price-group h3{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:0 0 4px;font-weight:600;}
+
+  .callout{background:var(--surface);border-radius:14px;padding:15px 17px;margin-top:8px;}
+  .callout p{margin:0;color:var(--ink);font-size:14px;}
+  .callout p+p{margin-top:7px;color:var(--ink-muted);}
+
+  .pet,.contact{display:flex;gap:13px;align-items:flex-start;background:var(--surface-2);border-radius:14px;padding:16px 18px;}
+  .pet-emoji{font-size:21px;line-height:1;}
+  .contact ul{width:100%;}
+  .contact li{border-top:1px solid var(--hairline);display:flex;justify-content:space-between;}
+  .contact li:first-child{border-top:none;}
+  .contact li b{color:var(--ink-muted);font-weight:500;}
+  .contact li span{color:var(--ink);font-weight:500;}
+
+  footer{text-align:center;color:var(--ink-muted);font-size:12.5px;padding-top:18px;border-top:1px solid var(--hairline);}
+  @media (max-width:420px){.wrap{padding:0 16px 60px;}}
+</style>
+</head>
+<body data-lang="zh">
+<div class="wrap">
+
+  <div class="langbar">
+    <div class="langtoggle">
+      <button data-set="zh" onclick="document.body.setAttribute('data-lang','zh')">中文</button>
+      <button data-set="en" onclick="document.body.setAttribute('data-lang','en')">EN</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <p class="brand">Yoonails<small class="zh">Home Studio · 预约须知</small><small class="en">Home Studio · Booking Policy</small></p>
+    <div class="swatches">
+      <span class="swatch gold"></span><span class="swatch rose"></span><span class="swatch wine"></span>
+      <span class="swatch sage"></span><span class="swatch lavender"></span>
+    </div>
+  </div>
+
+  <div class="consent">
+    <strong class="zh">提交预约申请或支付定金，即代表您已阅读并同意以下所有条款。</strong>
+    <strong class="en">Submitting a booking request or paying the deposit means you have read and agree to the policies below.</strong>
+    <p class="zh" style="margin:0;">✨ 仅接受预约制，请提前通过链接预约。当日空位有限。所有时间均为多伦多当地时间，请核对好您的时区。</p>
+    <p class="en" style="margin:0;">✨ By appointment only — please book in advance through the link. Same-day availability is limited. All times shown are Toronto local time — please double-check your time zone.</p>
+  </div>
+
+  <section>
+    <div class="section-head"><span class="dot" style="background:var(--gold)"></span>
+      <h2 class="zh">如何预约</h2><h2 class="en">Booking</h2>
+    </div>
+    <ul>
+      <li class="zh"><b>本甲护理</b>预约 1 个时间段（2 小时）</li>
+      <li class="en"><b>Natural nail service</b> = 1 slot (2 hours)</li>
+      <li class="zh"><b>甲片 / 延长</b>预约 2 个连续时间段（4 小时）</li>
+      <li class="en"><b>Extensions</b> = 2 consecutive slots (4 hours)</li>
+      <li class="zh"><b>复杂手绘定制</b>请先私信确认款式和时长，再预约</li>
+      <li class="en"><b>Complex / custom hand-painted designs</b> — please DM to confirm design & time before booking</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="dot" style="background:var(--gold)"></span>
+      <h2 class="zh">价目表</h2><h2 class="en">Price List</h2>
+    </div>
+
+    <div class="price-group">
+      <h3 class="zh">美甲 MANICURE</h3><h3 class="en">MANICURE</h3>
+      <table>
+        <tr><td class="zh">纯色 / 猫眼 / 渐变</td><td class="en">Single Color / Cat Eye / Gradient</td><td>$68</td></tr>
+        <tr><td class="zh">跳色 / 贴钻</td><td class="en">Color-changing / Rhinestones</td><td>$78</td></tr>
+        <tr><td class="zh">法式 / 晕染</td><td class="en">French / Marble / Blooming</td><td>$88</td></tr>
+        <tr><td class="zh">蹭粉 / 手绘盲盒</td><td class="en">Powder Effects / Mystery Art Box</td><td>$98</td></tr>
+        <tr><td class="zh">全手绘 / 定制</td><td class="en">Full Hand-Painted & Custom</td><td>$128+</td></tr>
+      </table>
+    </div>
+
+    <div class="price-group">
+      <h3 class="zh">延长 EXTENSIONS</h3><h3 class="en">EXTENSIONS</h3>
+      <table>
+        <tr><td class="zh">高位半贴甲片（含建构）</td><td class="en">Half Cover Nail Tips (incl. structure)</td><td>$30</td></tr>
+        <tr><td class="zh">甲模延长</td><td class="en">Gel Extension</td><td>$30</td></tr>
+        <tr><td class="zh">浅贴甲片</td><td class="en">Short Cover Nail Tips</td><td>$50</td></tr>
+      </table>
+      <p class="note zh">甲模延长不适合本甲太短、甲床偏宽或扇形甲；浅贴推荐有上翘/扇形等问题、对精致度有要求的宝们。</p>
+      <p class="note en">Gel extension isn't ideal for very short nails, wide nail beds, or fan-shaped nails; short cover tips are recommended for upward-curving or fan-shaped nails, or if you want extra precision.</p>
+    </div>
+
+    <div class="price-group">
+      <h3 class="zh">其他 OTHERS</h3><h3 class="en">OTHERS</h3>
+      <table>
+        <tr><td class="zh">仅卸甲 · 本甲</td><td class="en">Removal only · natural nails</td><td>$10</td></tr>
+        <tr><td class="zh">仅卸甲 · 延长</td><td class="en">Removal only · extensions</td><td>$20</td></tr>
+        <tr><td class="zh">断甲修复 / 单指甲片</td><td class="en">Repair / single-nail tip</td><td>$5</td></tr>
+      </table>
+      <p class="note zh">卸甲免费仅限于：本店做的款式 + 当次续做新款。其余情况（非本店做的、或仅卸不做）均按上方价格收费。</p>
+      <p class="note en">Free removal applies only when the original set was done here AND you're getting a new set the same visit. All other cases (not our work, or removal only) are charged as listed above.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="dot" style="background:var(--gold)"></span>
+      <h2 class="zh">定金政策</h2><h2 class="en">Deposit</h2>
+    </div>
+    <div class="callout">
+      <p class="zh">预约需支付定金 $20 CAD 以锁定档期。已充值会员无需另付定金，费用直接从余额扣除。</p>
+      <p class="en">A $20 CAD deposit is required to lock in your appointment. Members with a prepaid balance don't need a separate deposit — the cost is deducted directly.</p>
+      <p class="zh">仅在提交预约申请并收到定金后，预约才算正式成功；若 2 小时内未支付，系统将自动释放该时间段。</p>
+      <p class="en">Your booking is only confirmed once the deposit is received; if unpaid within 2 hours, the slot is automatically released.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="dot" style="background:var(--rose)"></span>
+      <h2 class="zh">改期政策</h2><h2 class="en">Rescheduling</h2>
+    </div>
+    <p class="zh">如需改期，请至少提前 48 小时通知。48 小时以内提出改期，视为取消原预约，按取消政策处理。</p>
+    <p class="en">Please give at least 48 hours' notice to reschedule. Requests within 48 hours are treated as a cancellation under the policy below.</p>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="dot" style="background:var(--wine)"></span>
+      <h2 class="zh">取消 / 退款政策</h2><h2 class="en">Cancellation & Refunds</h2>
+    </div>
+    <table>
+      <tr><th class="zh">提前通知</th><th class="en">Notice</th><th class="zh">处理方式</th><th class="en">Result</th></tr>
+      <tr><td class="zh">48 小时以上</td><td class="en">48+ hrs</td><td colspan="2" class="zh">全额退款 / 转为余额</td></tr>
+      <tr><td class="zh">24–48 小时</td><td class="en">24–48 hrs</td><td colspan="2" class="zh">扣除 50% 定金</td></tr>
+      <tr><td class="zh">24 小时以内 / 未到场</td><td class="en">Under 24 hrs / no-show</td><td colspan="2" class="zh">没收 100% 定金</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="dot" style="background:var(--sage)"></span>
+      <h2 class="zh">到店与迟到政策</h2><h2 class="en">Arrival & Late Policy</h2>
+    </div>
+    <ul>
+      <li class="zh">请在抵达前 5–10 分钟发消息告知，会亲自下楼接您</li>
+      <li class="en">Please message 5–10 min before arrival — I'll come down to let you in</li>
+      <li class="zh"><b>迟到 15 分钟</b>：服务时间不顺延，仅能进行纯色基础护理，复杂款式需改期；$10 定金作为调度费不予退还</li>
+      <li class="en"><b>15+ min late</b>: appointment time is not extended; only a basic single-color service is possible, complex designs must be rescheduled; $10 of the deposit is a non-refundable scheduling fee</li>
+      <li class="zh"><b>迟到 30 分钟 / 未通知缺席</b>：预约自动取消，$20 定金全额没收</li>
+      <li class="en"><b>30+ min late / unnotified no-show</b>: appointment is auto-cancelled, full $20 deposit forfeited</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="dot" style="background:var(--lavender)"></span>
+      <h2 class="zh">会员充值</h2><h2 class="en">Membership</h2>
+    </div>
+    <div class="callout">
+      <p class="zh">充值 $300 送 $30 ｜ 充值 $500 送 $60，款式额外 9 折 ｜ 充值 $900 送 $100，款式额外 8 折</p>
+      <p class="en">Recharge $300 → get $330 credit &nbsp;|&nbsp; $500 → $560 credit + 10% off designs &nbsp;|&nbsp; $900 → $1000 credit + 20% off designs</p>
+    </div>
+    <ul style="margin-top:6px;">
+      <li class="zh">默认包含精细前置处理和建构</li>
+      <li class="en">Detailed prep & structure building included by default</li>
+      <li class="zh">款式一口价，所有钻饰贴纸不额外收费</li>
+      <li class="en">Flat design pricing — rhinestones & stickers included, no extra charge</li>
+      <li class="zh">美甲七日内免费售后，七日后视情况收费</li>
+      <li class="en">Free touch-ups within 7 days; after 7 days, a fee may apply depending on the issue</li>
+      <li class="zh">会员金额长期有效，可与家人朋友共享</li>
+      <li class="en">Membership balance never expires and can be shared with family or friends</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="dot" style="background:var(--lavender)"></span>
+      <h2 class="zh">温馨提示</h2><h2 class="en">Good to know</h2>
+    </div>
+    <div class="pet">
+      <span class="pet-emoji">🐶</span>
+      <p style="margin:0;color:var(--ink-muted);font-size:14px;">
+        <span class="zh">家中有一只友好的比熊犬，如有过敏或不适请提前告知。</span>
+        <span class="en">We have a sweet, friendly Bichon Frise at home — please let me know when booking if you're allergic or not comfortable around dogs.</span>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="dot" style="background:var(--gold)"></span>
+      <h2 class="zh">联系方式</h2><h2 class="en">Contact</h2>
+    </div>
+    <div class="contact">
+      <ul>
+        <li><b>WeChat</b><span>Yoonails</span></li>
+        <li><b class="zh">电话（仅短信）</b><b class="en">Phone (text only)</b><span>226-581-2996</span></li>
+        <li><b>Instagram</b><span>Yoonails.beauty</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer><span class="zh">如有疑问，请随时私信咨询 💅</span><span class="en">Questions? Feel free to DM anytime 💅</span></footer>
+
+</div>
+</body>
+</html>
